@@ -1,8 +1,6 @@
 import { Todo } from './todo.model';
 import { Injectable } from '@angular/core';
-
 import { AngularFireList, AngularFireDatabase} from 'angularfire2/database';
-import { FirebaseDatabase } from '@firebase/database-types';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +8,13 @@ import { FirebaseDatabase } from '@firebase/database-types';
 export class TodoService {
 
   todoList: AngularFireList<any>;
-  selectedTodo: Todo;
+  selectedTodo: Todo = new Todo();
 
   constructor(private firebase: AngularFireDatabase) { }
 
   getTodos() {
-    return this.todoList = this.firebase.list('todos');
+    this.todoList = this.firebase.list('todos');
+    return this.todoList;
   }
 
   insertTodo(todo: Todo) {

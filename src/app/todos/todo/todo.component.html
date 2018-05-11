@@ -1,21 +1,21 @@
-<p>
-  todo works!
-</p>
-
 <div class="container">
-    <h1>Todo Edit</h1>
-    <form>
+    <h1>Create TODO</h1>
+    <hr>
+    <form #todoForm="ngForm" (ngSubmit)="onSubmit(todoForm)">
+
+        <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="todoService.selectedTodo.key">
+
       <div class="form-group">
         <label for="done">Done</label>
-        <input type="checkbox" class="form-control" id="done" required>
+        <input type="checkbox" class="form-control" name="done" #done="ngModel" id="done" [(ngModel)]="todoService.selectedTodo.done">
       </div>
  
       <div class="form-group">
         <label for="text">Text</label>
-        <input type="text" class="form-control" id="text">
+        <input type="text" class="form-control" name="text" #text="ngModel" id="text" [(ngModel)]="todoService.selectedTodo.text" placeholder="..." required>
       </div>
  
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button type="submit" class="btn btn-success" [disabled]="!todoForm.valid">Submit</button>
  
     </form>
 </div>

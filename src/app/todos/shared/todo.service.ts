@@ -18,6 +18,7 @@ export class TodoService {
   }
 
   insertTodo(todo: Todo) {
+    this.todoList = this.firebase.list('todos');
     this.todoList.push({
       done: todo.done,
       text: todo.text

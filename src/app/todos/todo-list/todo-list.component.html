@@ -1,3 +1,4 @@
-<p>
-  todo-list works!
-</p>
+<div>
+  <ul *ngFor="let todo of todoList">
+    <li>{{todo.done}} - {{todo.text}}</li>
+  </ul>

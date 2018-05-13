@@ -25,4 +25,13 @@ export class TodoListComponent implements OnInit {
     });
   }
 
+  onEdit(todo: Todo) {
+    this.todoService.selectedTodo = Object.assign({}, todo);
+  }
+
+  onDelete(key: string) {
+    if (confirm('Are you sure you want to delete this record?') === true) {
+    this.todoService.deleteTodo(key);
+    }
+  }
 }

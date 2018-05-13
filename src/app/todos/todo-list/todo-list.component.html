@@ -1,4 +1,16 @@
 <div>
+  <h6>Todos List:</h6><br>
   <ul *ngFor="let todo of todoList">
-    <li>{{todo.done}} - {{todo.text}}</li>
+    <li>
+        <a class="btn" (click)="onEdit(todo)">
+          <i class="fa fa-pencil-square-o">  
+          </i>
+        </a>
+        <a class="btn" (click)="onDelete(todo.$key)">
+          <i class="fa fa-trash-o">  
+          </i>
+        </a>  
+        {{todo.done}} - {{todo.text}} 
+    </li>
   </ul>
+</div>
